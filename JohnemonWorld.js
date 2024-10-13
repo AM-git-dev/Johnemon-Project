@@ -1,6 +1,5 @@
-const JohnemonMaster = require('./JohnemonMaster');
-const JohnemonArena = require('./JohnemonArena');
-
+import JohnemonMaster from './JohnemonMaster.js';
+import JohnemonArena from './JohnemonArena.js';
 const johnemonArena = new JohnemonArena();
 
 class JohnemonWorld {
@@ -56,6 +55,7 @@ class JohnemonWorld {
 
       case "7":
         this.saveGameState();
+        console.log("La partie a été sauvegardée")
         break;
 
       default:
@@ -85,4 +85,4 @@ class JohnemonWorld {
   }
 }
 
-module.exports = JohnemonWorld;
+export default JohnemonWorld;

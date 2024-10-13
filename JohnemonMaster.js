@@ -1,4 +1,5 @@
-const Johnemon = require('./Johnemon');
+//johnemonMaster.js
+import Johnemon from './Johnemon.js';
 
 class JohnemonMaster {
   constructor() {
@@ -71,4 +72,4 @@ class JohnemonMaster {
   }
 }
 
-module.exports = JohnemonMaster;
+export default JohnemonMaster;

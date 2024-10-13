@@ -1,3 +1,4 @@
+//Johnemon.js
 class Johnemon {
   constructor(name = this.generateRandomJohnemonName(), level = 1, experience = 0, attackRange = this.generateAttackRange(), defenseRange = this.generateDefenseRange(), maxLife = this.generateHealthPool(), actualLife = maxLife, shiny = this.generateShiny()) {
     this.name = name
@@ -77,4 +78,4 @@ class Johnemon {
    }
 
   
-module.exports = Johnemon;
+export default Johnemon;

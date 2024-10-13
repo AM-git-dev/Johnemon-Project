@@ -1,5 +1,17 @@
 {
+  "name": "johnemon-game",
+  "version": "1.0.0",
+  "description": "A text-based game inspired by Pokémon",
+  "main": "Game.js",
+  "type": "module",
+  "scripts": {
+    "start": "node Game.js"
+  },
+  "author": "Your Name",
+  "license": "MIT",
   "dependencies": {
-    "colors": "^1.4.0"
+    "colors": "^1.4.0",
+    "dotenv": "^16.4.5",
+    "mysql2": "^2.3.3"
   }
 }

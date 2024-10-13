@@ -1,11 +1,11 @@
 // JohnemonArena.js
 
-const Johnemon = require("./Johnemon");
-const JohnemonMaster = require("./JohnemonMaster");
-const JohnemonWorld = require("./JohnemonWorld");
+import Johnemon from './Johnemon.js';
+import JohnemonMaster from './JohnemonMaster.js';
+import JohnemonWorld from './JohnemonWorld.js';
 
 class JohnemonArena {
- 
+
   calculateDamage(attacker, defender) {
     const attackRoll = Math.floor(Math.random() * attacker.attackRange) + 1;
     const attackMultiplier = 1 + (attacker.level * 0.1);
@@ -15,10 +15,10 @@ class JohnemonArena {
     const totalDefense = defender.defenseRange * defenseMultiplier;
 
     let damage = totalAttack - totalDefense;
-    damage = Math.max(0, Math.floor(damage)); 
+    damage = Math.max(0, Math.floor(damage));
 
     defender.actualLife -= damage;
-    defender.actualLife = Math.max(0, defender.actualLife); 
+    defender.actualLife = Math.max(0, defender.actualLife);
 
     return damage;
   }
@@ -32,20 +32,20 @@ class JohnemonArena {
       return 'playerDefeated';
     }
 
-    return 'ongoing'; 
+    return 'ongoing';
   }
 
 
- 
+
     tryToCatch(enemyJohnemon) {
-     
+
       const missingHpPercentage = (1 - (enemyJohnemon.actualLife / enemyJohnemon.maxLife)) * 100;
-  
-    
-      const catchRate = Math.min(100, missingHpPercentage + 10); 
-  
+
+
+      const catchRate = Math.min(100, missingHpPercentage + 10);
+
       const captureAttempt = Math.random() * 100;
-  
+
       return captureAttempt <= catchRate;
   }
 
@@ -54,7 +54,7 @@ class JohnemonArena {
     return Math.random() > 0.5;
   }
 
- 
+
   attack(attacker, defender) {
     const damage = this.calculateDamage(attacker, defender);
     return {
@@ -67,7 +67,7 @@ class JohnemonArena {
     return this.tryToCatch(enemyJohnemon);
   }
 
-  
+
   useHealingItem(johnemonMaster, targetJohnemon) {
     if (johnemonMaster.healingItems <= 0) {
       return { success: false, message: "Vous n'avez plus d'objets de soin." };
@@ -79,12 +79,12 @@ class JohnemonArena {
     return { success: true, message: `${targetJohnemon.name} a été soigné à pleine vie.` };
   }
 
-  
+
   attemptFlee() {
     return this.fleeBattle();
   }
 
- 
+
   processPlayerAction(action, playerJohnemon, enemyJohnemon, johnemonMaster) {
     let battleStatus = 'ongoing';
     let message = '';
@@ -127,7 +127,7 @@ class JohnemonArena {
         break;
     }
 
-    
+
     if (battleStatus === 'ongoing') {
       const status = this.checkBattleStatus(playerJohnemon, enemyJohnemon);
       if (status === 'enemyDefeated') {
@@ -142,7 +142,7 @@ class JohnemonArena {
     return { battleStatus, message };
   }
 
-  
+
   enemyTurn(playerJohnemon, enemyJohnemon) {
     if (enemyJohnemon.actualLife <= 0) return { battleStatus: 'enemyDefeated', message: '' };
 
@@ -160,4 +160,4 @@ class JohnemonArena {
 
 }
 
-module.exports = JohnemonArena;
+export default JohnemonArena;
